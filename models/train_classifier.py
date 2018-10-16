@@ -12,7 +12,7 @@ import argparse
 
 #parsing for terminal input
 parser = argparse.ArgumentParser()
-parser.add_argument('--database', type = str, help = 'input target database', default = 'DisasterResponse.db')
+parser.add_argument('--database', type = str, help = 'input target database', default = './data/DisasterResponse.db')
 parser.add_argument('--model', type = str, help = 'input target model to save', default = 'classifier.pkl')
 args = parser.parse_args()
 

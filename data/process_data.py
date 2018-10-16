@@ -5,9 +5,9 @@ from sqlalchemy import create_engine
 
 #parsing for terminal input
 parser = argparse.ArgumentParser()
-parser.add_argument('--messages', type = str, help = 'input messages csv file', default = 'disaster_messages.csv')
-parser.add_argument('--categories', type = str, help = 'input categories csv file', default = 'disaster_categories.csv')
-parser.add_argument('--database', type = str, help = 'input target database', default = 'DisasterResponse.db')
+parser.add_argument('--messages', type = str, help = 'input messages csv file', default = 'data/disaster_messages.csv')
+parser.add_argument('--categories', type = str, help = 'input categories csv file', default = 'data/disaster_categories.csv')
+parser.add_argument('--database', type = str, help = 'input target database', default = 'data/DisasterResponse.db')
 args = parser.parse_args()
 
 #loading the csv files and database file
@@ -23,9 +23,9 @@ messages = pd.read_csv(messages_csv)
 categories = pd.read_csv(categories_csv)
 
 #merging messages and categories into a single dataframe
-#df = pd.merge(messages,categories, on = 'id', how = 'inner')
-categories.drop(categories.columns[categories.columns.isin(messages.columns)],axis=1,inplace=True)
-df = pd.concat([messages, categories], axis = 1)
+df = pd.merge(messages,categories, on = 'id', how = 'inner')
+#categories.drop(categories.columns[categories.columns.isin(messages.columns)],axis=1,inplace=True)
+#df = pd.concat([messages, categories], axis = 1)
 
 #preparing categories dataframe
 categories = df['categories'].str.split(';', expand = True)
