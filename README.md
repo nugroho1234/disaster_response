@@ -38,12 +38,20 @@ This is the .py file for ML Pipeline. To run: go to command line and type:
 python train_classifier.py
 The arguments are:
 --database (target database to load the data from)
---modl (model file name to save)
+--model (model file name to save)
 ### run.py
 This is the app file. The app will get the model and database from both train_classifier and process_data.py and display it in a web page.
-To run:
-1. go to command line and type python run.py
-2. go to your browser and type localhost:3001
+
+# Running the app
+To run the app, make sure you are in the disaster_response directory (outside of any directory such as app, data, and models). Then, go to command line and type:
+1. python data\process_data.py
+If you want any additional arguments, you can run e.g. python data\process_data.py --message data\disaster_messages.csv --categories data\disaster_categories.csv --database data\DisasterResponse.db
+2. Then, you can create the classifier using:
+python models\train_classifier.py
+If you want any additional arguments, you can run e.g. python models\train_classifier.py --database ./data/DisasterResponse.db --model models\classifier.pkl
+3. These two files will create the database and the model. Again, the train_classifier.py takes a long time (I took almost 24 hours) to train.
+4. Run the app by typing python app\run.py
+5. Go to your browser and type localhost:5000
 
 # How to use this project
 This project is interactive in nature. Type the messages in the form, and click classify. It will classify the message into one or more categories such as food, water, or shelter.
