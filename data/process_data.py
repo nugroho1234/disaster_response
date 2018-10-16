@@ -5,8 +5,8 @@ from sqlalchemy import create_engine
 
 #parsing for terminal input
 parser = argparse.ArgumentParser()
-parser.add_argument('--messages', type = str, help = 'input messages csv file', default = 'messages.csv')
-parser.add_argument('--categories', type = str, help = 'input categories csv file', default = 'categories.csv')
+parser.add_argument('--messages', type = str, help = 'input messages csv file', default = 'disaster_messages.csv')
+parser.add_argument('--categories', type = str, help = 'input categories csv file', default = 'disaster_categories.csv')
 parser.add_argument('--database', type = str, help = 'input target database', default = 'DisasterResponse.db')
 args = parser.parse_args()
 

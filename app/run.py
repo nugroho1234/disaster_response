@@ -56,7 +56,7 @@ class KeywordExtractor(BaseEstimator, TransformerMixin):
 
 
 # load data
-engine = create_engine('sqlite:///../data/DisasterResponse.db')
+engine = create_engine('sqlite:///./data/DisasterResponse.db')
 df = pd.read_sql_table('disaster_response', engine)
 
 # load model
@@ -144,9 +144,6 @@ def go():
     )
 
 
-def main():
-    app.run(host='0.0.0.0', port=3001, debug=True)
-
 
 if __name__ == '__main__':
-    main()
+    app.server.run(debug = True, threaded = True)
