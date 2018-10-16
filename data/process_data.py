@@ -23,7 +23,9 @@ messages = pd.read_csv(messages_csv)
 categories = pd.read_csv(categories_csv)
 
 #merging messages and categories into a single dataframe
-df = pd.merge(messages,categories, on = 'id')
+#df = pd.merge(messages,categories, on = 'id', how = 'inner')
+categories.drop(categories.columns[categories.columns.isin(messages.columns)],axis=1,inplace=True)
+df = pd.concat([messages, categories], axis = 1)
 
 #preparing categories dataframe
 categories = df['categories'].str.split(';', expand = True)
