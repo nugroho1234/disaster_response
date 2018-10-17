@@ -43,13 +43,14 @@ def tokenize(text):
     Input: text to be tokenized
     Output: clean tokens
     '''
-    token = word_tokenize(text)
+    tokens = word_tokenize(text)
+    tokens = [token.lower() for token in tokens if token.isalpha()]
     lemmatizer = WordNetLemmatizer()
     clean_tokens = []
-    for tok in token:
+    for tok in tokens:
         clean_tokens.append(lemmatizer.lemmatize(tok))
     return clean_tokens
-
+    
 def build_pipeline():
     '''
     Input: none
@@ -77,7 +78,7 @@ def grid_search(pipeline, X_train, X_test, y_train, y_test, parameters):
     X_train, X_test, y_train, y_test: dataframe splitted into train and test sets
     parameters: GridSearchCV parameters
 
-    Outputs grid search model and y_pred in the form of a dataframe  
+    Outputs grid search model and y_pred in the form of a dataframe
     '''
     cv = GridSearchCV(estimator = pipeline, param_grid = parameters, verbose = 2)
     cv.fit(X_train, y_train)
