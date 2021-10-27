@@ -42,7 +42,7 @@ dash-auth==1.1.4
 dash-core-components==0.22.1
 dash-html-components==0.10.0
 dash-renderer==0.12.1
-dask==0.17.2
+dask==2021.10.0
 datashape==0.5.4
 decorator==4.3.0
 distributed==1.21.6
